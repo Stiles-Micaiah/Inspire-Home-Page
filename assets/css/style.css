@@ -1,0 +1,13 @@
+#todo-error{
+  color: red;
+  font-size: 2em;
+}
+
+
+body {
+  background-image: radial-gradient(
+    red,
+    orange,
+    purple
+  )
+}
