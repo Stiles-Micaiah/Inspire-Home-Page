@@ -8,6 +8,7 @@ function _drawTodos() {
 	todos.forEach(todo => {
 		template += todo.Template
 	})
+	
 	document.getElementById('todo').innerHTML = template
 }
 
