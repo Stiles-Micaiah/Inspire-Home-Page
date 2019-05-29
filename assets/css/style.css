@@ -4,10 +4,24 @@
 }
 
 
-body {
-  background-image: radial-gradient(
-    red,
-    orange,
-    purple
-  )
+#weather {
+  background-color: #00000000
 }
+
+
+#bg-image {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#quote {
+  mix-blend-mode: difference
+}
+
+
+/* ul-body {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+} */

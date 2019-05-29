@@ -21,16 +21,16 @@ function _setState(prop, data) {
 
 
 export default class WeatherService {
-	
-	addSubscriber(prop, fn) {
-		_subscribers[prop].push(fn)
-	}
-	
 	get Weather() {
 		return _state.weather
 	}
 
+	addSubscriber(prop, fn) {
+		_subscribers[prop].push(fn)
+	}
+
 	getWeather() {
+		console.log('Calling the Weatherman')
 		weatherApi.get().then(res => {
 			_setState('weather', new Weather(res.data))
 		})

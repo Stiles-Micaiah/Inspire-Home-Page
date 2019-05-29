@@ -6,52 +6,62 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.css">
-	<link rel="shortcut icon" href="http://www.mediafire.com/convkey/cf2d/9zkh894y9d3dbuyzg.jpg" type="image/x-icon">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<title>Inspire Shizzazzle</title>
+	<link rel="shortcut icon" href="assets/SharedSpriteDesktop_2x_040919.png" type="image/x-icon">
+
+	<title>Work Bitch</title>
+
 </head>
 
 <body id="bg-image">
 
-	<div class="container-fluid">
-		<div class="row">
-			<div id="left-col" class="col-4">
-				<span>
-					<a></a>
-					<h3 id="Background-desc"></h3>
-				</span>
-			</div>
-			<div id="middle-col" class="col-4">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a id="navbar-brand" class="navbar-brand" href="#"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+			aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-				<div class="row">
-					<p id="quote"></p>
-				</div>
-			</div>
-			<div id="right-col" class="col-4">
-				<div id="weather" class="row">
-					<ul class="" style="list-style: none;">
-						<li>
-							<i class="far fa-moon"></i>
-							<h5>51*</h5>
-						</li>
-						<li>
-							<h6>Boise</h6>
-						</li>
+		<div class="collapse navbar-collapse" id="navbarColor01">
+
+
+		</div>
+	</nav>
+
+	<main>
+
+		<div>
+
+			<div id="todo-error"></div>
+
+
+			<div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+				<div class="card-header">Daily Bucket List</div>
+				<div class="card-body">
+					<form onsubmit="app.controllers.todoController.addTodo(event)">
+						<input id="description" type="text" name="description" class="form-control"
+							placeholder='"What would you like to do?"' required>
+						<button type="submit" class="btn btn-info rounded-pill">Improve List</button>
+					</form>
+					<ul id="todo">
+						<!--list of todos-->
 					</ul>
 				</div>
-				<div class="row">
-
-				</div>
 			</div>
+
+
+
 		</div>
-	</div>
 
 
 
 
+	</main>
+	<footer id="quote">
 
+	</footer>
 
 
 
@@ -61,17 +71,3 @@
 
 </html>
 <html>
-<!-- <div id="weather">
-		Your Weather Template
-	</div>
-	
-	<div id="quote">
-		The Quote
-	</div>
-	
-	<div>
-		A Todo List
-		<div id="todo-error"></div>
-		<form onsubmit=""></form>
-		<div id="todos"></div>
-	</div> -->

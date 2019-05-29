@@ -1,64 +1,71 @@
+import Todo from "../../models/todo.js";
+
 // @ts-ignore
-const todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/jake/todos/',
+const _todoApi = axios.create({
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/Micaiah/todos/',
 	timeout: 3000
 });
 
 let _state = {
 	todos: [],
-	error: {},
+	error: {}
 }
 let _subscribers = {
 	todos: [],
 	error: []
 }
 
-function _setState(prop, data) {
-	_state[prop] = data
-	_subscribers[prop].forEach(fn => fn())
+function _setState(propName, data) {
+	_state[propName] = data
+	_subscribers[propName].forEach(fn => fn())
 }
 
 export default class TodoService {
 	get TodoError() {
-		return _state.error
+		return _state.error.map(c => new Todo(c))
 	}
 
-	addSubscriber(prop, fn) {
-		_subscribers[prop].push(fn)
+	get Todo() {
+		return _state.todos.map(c => new Todo(c))
+
 	}
 
-	getTodos() {
-		console.log("Getting the Todo List")
-		todoApi.get()
-			.then(res => {
-				// WHAT DO YOU DO WITH THE RESPONSE?
+	addSubscriber(propName, fn) {
+		_subscribers[propName].push(fn)
+	}
+
+	getAllTodos() {
+		_todoApi.get()
+			.then(response => {
+				let data = response.data.data.map(t => new Todo(t))
+				_setState('todos', data)
 			})
-			.catch(err => _setState('error', err.response.data))
-	}
+ 	}
 
-	addTodo(todo) {
-		todoApi.post('', todo)
+
+	addTodo(todoData) {
+		_todoApi.post('', todoData)
 			.then(res => {
-				// WHAT DO YOU DO AFTER CREATING A NEW TODO?
+				this.getAllTodos()
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
 	toggleTodoStatus(todoId) {
 		let todo = _state.todos.find(todo => todo._id == todoId)
-		// Be sure to change the completed property to its opposite
-		// todo.completed = !todo.completed <-- THIS FLIPS A BOOL
-
-		todoApi.put(todoId, todo)
+		let todoActive = todo.activeStatus = !todo.activeStatus
+		_todoApi.put(todoId, todo)
 			.then(res => {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
+
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
-	removeTodo(todoId) {
-		// This one is on you to write.... 
-		// The http method is delete at the todoId
+	removeTodo(id) {
+		_todoApi.delete(id)
+			.then(res => {
+				this.getAllTodos
+			})
 	}
 
 }
