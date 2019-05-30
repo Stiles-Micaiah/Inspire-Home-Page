@@ -52,14 +52,19 @@ export default class TodoService {
 	}
 
 	toggleTodoStatus(todoId) {
+
+
 		let todo = _state.todos.find(todo => todo._id == todoId)
-		let todoActive = todo.activeStatus = !todo.activeStatus
+		todo.completed = !todo.completed
 		_todoApi.put(todoId, todo)
 			.then(res => {
 
 			})
 			.catch(err => _setState('error', err.response.data))
+			
 	}
+
+	
 
 	removeTodo(id) {
 		_todoApi.delete(id)

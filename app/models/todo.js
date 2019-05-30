@@ -12,8 +12,17 @@ export default class Todo {
     get Template() {
 
         return `
-            <li>${this.description}<button onclick = "app.controllers.todoController.removeTodo('${this._id}')" class = "btn btn-primary rounded-pill"<button></li>
-            `
+        <li>
+            <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="${this._id}" ${this.completed ? 'checked' : ''}>
+                    <label class="custom-control-label" for="${this._id}" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')">
+                        <span class= "${this.completed ? "completed-checkbox-thing" : "" }">${this.description}</span>
+                    </label>
+                    <button onclick = "app.controllers.todoController.removeTodo('${this._id}')" class = "btn btn-sm btn-primary rounded-pill">Ditch</button>
+                </div>
+            </div>
+        </li>`
 
     }
 }
